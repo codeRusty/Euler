@@ -2,10 +2,12 @@
 
 namespace Euler
 {
-    class Problem2 : IProblem
+    class Problem2 : AbstractProblem
     {
-        public void Execute()
+        public override void Execute()
         {
+
+            StartStopwatch();
             Console.WriteLine("By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms");
 
             int first = 1;
@@ -25,7 +27,8 @@ namespace Euler
                 else
                     i--;
             }
-
+            StopStopwatch();
+            LogElapsedTime();
         }
     }
 }

@@ -7,6 +7,7 @@ namespace Euler
 {
     class Program
     {
+
         static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -22,13 +23,7 @@ namespace Euler
 
                     Console.Clear();
 
-                    // Main Execution of the Problem starts here
-                    var watch = System.Diagnostics.Stopwatch.StartNew();
                     Executor exec = new Executor(Creator.Create(selectedProblem));
-                    watch.Stop();
-
-                    // Calculating the time elapsed.
-                    ShowTimeResult(watch.ElapsedMilliseconds);
 
                     //Waiting for user Input to navigate
                     Console.ReadKey();
@@ -45,8 +40,6 @@ namespace Euler
                     break;
 
             }
-
-
         }
 
         private static void ListProblems(ref Enums.Problem selectedProblem)
@@ -127,20 +120,5 @@ namespace Euler
 
         }
 
-        private static void ShowTimeResult(long time)
-        {
-            if (time > 1000)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Execution time : {time}ms ");
-                Console.ForegroundColor = ConsoleColor.Yellow;
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"Execution time : {time}ms ");
-                Console.ForegroundColor = ConsoleColor.Yellow;
-            }
-        }
     }
 }

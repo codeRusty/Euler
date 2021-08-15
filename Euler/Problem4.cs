@@ -2,14 +2,14 @@
 
 namespace Euler
 {
-    public class Problem4 : IProblem
+    public class Problem4 : AbstractProblem
     {
         public Problem4()
         {
 
         }
 
-        public void Execute()
+        public override void Execute()
         {
             Console.WriteLine("Find the largest palindrome made from the product of two 3-digit numbers.");
             int max = 0;

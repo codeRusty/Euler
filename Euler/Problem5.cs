@@ -2,9 +2,9 @@
 
 namespace Euler
 {
-    public class Problem5 : IProblem
+    public class Problem5 : AbstractProblem
     {
-        public void Execute()
+        public override void Execute()
         {
             Console.WriteLine("What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?");
 

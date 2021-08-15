@@ -4,15 +4,18 @@ namespace Euler
 {
     // If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
     // Find the sum of all the multiples of 3 or 5 below 1000.
-    class Problem1 : IProblem
+    class Problem1 : AbstractProblem
     {
         int sum = 0;
-        public void Execute()
+        public override void Execute()
         {
+            // Getting the values required.
             Console.WriteLine("Find the sum of all the multiples of 3 or 5 below x.");
             Console.Write("What is the value of x (should be more than 2) : ");
-
             string input = Console.ReadLine();
+
+            StartStopwatch();
+
             int output = 0;
             bool isInt = int.TryParse(input, out output);
             if (isInt && output > 2)
@@ -35,6 +38,8 @@ namespace Euler
             {
                 Console.WriteLine("Improper Argument");
             }
+            StopStopwatch();
+            LogElapsedTime();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Euler
+﻿using static Euler.Enums;
+
+namespace Euler
 {
     public class Creator
     {
@@ -17,9 +19,9 @@
                 case Enums.Problem.Problem5:
                     return new Problem5();
                 case Enums.Problem.Problem6:
-                    return new Problem1();
+                    return new Problem6();
                 case Enums.Problem.Problem7:
-                    return new Problem1();
+                    return new Problem7();
                 case Enums.Problem.Problem8:
                     return new Problem1();
                 case Enums.Problem.Problem9:

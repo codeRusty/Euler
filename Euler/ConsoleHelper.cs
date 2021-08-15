@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace Euler
 {
@@ -13,6 +13,17 @@ namespace Euler
 
     public static class ConsoleHelper
     {
+
+        public static void TypeWritter(string text)
+        {
+            for (int i = 0; i < text.Length; i++)
+            {
+                Console.Write(text[i]);
+                System.Threading.
+                Thread.Sleep(50);
+            }
+        }
+
         [DllImport("kernel32")]
         public static extern bool SetConsoleIcon(IntPtr hIcon);
 
