@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace Euler
+namespace Euler.Problems
 {
     [Description("Smallest multiple")]
     public class Problem5 : AbstractProblem

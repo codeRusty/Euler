@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace Euler
+namespace Euler.Problems
 {
     [Description("Largest palindrome product")]
     public class Problem4 : AbstractProblem

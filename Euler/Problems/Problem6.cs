@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace Euler
+namespace Euler.Problems
 {
     [Description("Sum square difference")]
     public class Problem6 : AbstractProblem

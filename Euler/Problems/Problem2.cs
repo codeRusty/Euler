@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace Euler
+namespace Euler.Problems
 {
     [Description("Find the sum of Fibonacci sequence the even-valued terms.")]
     public class Problem2 : AbstractProblem
