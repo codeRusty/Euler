@@ -1,7 +1,9 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Euler
 {
+    [Description("Smallest multiple")]
     public class Problem5 : AbstractProblem
     {
         public override void Execute()

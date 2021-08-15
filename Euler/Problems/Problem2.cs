@@ -1,8 +1,10 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Euler
 {
-    class Problem2 : AbstractProblem
+    [Description("Find the sum of Fibonacci sequence the even-valued terms.")]
+    public class Problem2 : AbstractProblem
     {
         public override void Execute()
         {

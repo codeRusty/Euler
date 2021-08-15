@@ -10,8 +10,13 @@ namespace Euler
 
         static void Main(string[] args)
         {
+            MainWrapper();
+        }
+
+        public static void MainWrapper()
+        {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Enums.Problem selectedProblem = Enums.Problem.Problem1;
+            int selectedProblem = 1;
 
             int selection = 1;
             string nextStep = "Home";
@@ -42,28 +47,28 @@ namespace Euler
             }
         }
 
-        private static void ListProblems(ref Enums.Problem selectedProblem)
+        private static void ListProblems(ref int selectedProblem)
         {
             ConsoleKeyInfo key;
             do
             {
                 Console.Clear();
-                var values = Enum.GetValues(typeof(Enums.Problem));
+                var problems = AppDomain.CurrentDomain.GetAssemblies()
+                     .SelectMany(assembly => assembly.GetTypes())
+                     .Where(type => type.IsSubclassOf(typeof(AbstractProblem)));
                 Console.WriteLine("Here are the list of  Euler problems, Select the one you want to execute.\n");
 
-                foreach (Enums.Problem val in values)
+                foreach (var problem in problems)
                 {
-                    Type type = val.GetType();
-                    var memInfo = type.GetMember(type.GetEnumName(val));
-                    var descriptionAttribute = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false).FirstOrDefault() as DescriptionAttribute;
-
-                    if (val == selectedProblem)
+                    var descriptionAttribute = problem.GetCustomAttributes(typeof(DescriptionAttribute), false).FirstOrDefault() as DescriptionAttribute;
+                    var problemNumber = Convert.ToInt32(problem.Name.Substring(7, 1));
+                    if (problemNumber == selectedProblem)
                     {
-                        Console.Write(">>" + val.ToString());
+                        Console.Write(">>" + problem.Name.ToString());
                     }
                     else
                     {
-                        Console.Write("  " + val.ToString());
+                        Console.Write("  " + problem.Name.ToString());
                     }
                     if (descriptionAttribute != null)
                     {
@@ -77,13 +82,13 @@ namespace Euler
                 key = Console.ReadKey(true);
                 if (key.Key.ToString() == "DownArrow")
                 {
-                    if ((Convert.ToInt16(selectedProblem) + 1) <= values.Length)
-                        selectedProblem = (Enums.Problem)Convert.ToInt16(selectedProblem) + 1;
+                    if (selectedProblem <= problems.Count())
+                        selectedProblem = selectedProblem + 1;
                 }
                 else if (key.Key.ToString() == "UpArrow")
                 {
-                    if ((Convert.ToInt16(selectedProblem) - 1) > 0)
-                        selectedProblem = (Enums.Problem)Convert.ToInt16(selectedProblem) - 1;
+                    if (selectedProblem - 1 > 0)
+                        selectedProblem = selectedProblem - 1;
                 }
             }
             while (key.KeyChar != 13);

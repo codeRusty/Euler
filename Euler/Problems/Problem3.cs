@@ -1,8 +1,10 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Euler
 {
-    class Problem3 : AbstractProblem
+    [Description("What is the largest prime factor of the number 600851475143 ")]
+    public class Problem3 : AbstractProblem
     {
         long x = 13195;
         public override void Execute()
