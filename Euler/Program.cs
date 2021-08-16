@@ -52,6 +52,7 @@ namespace Euler
             ConsoleKeyInfo key;
             do
             {
+
                 Console.Clear();
                 var problems = AppDomain.CurrentDomain.GetAssemblies()
                      .SelectMany(assembly => assembly.GetTypes())
