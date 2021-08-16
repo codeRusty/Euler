@@ -62,7 +62,7 @@ namespace Euler
                 foreach (var problem in problems)
                 {
                     var descriptionAttribute = problem.GetCustomAttributes(typeof(DescriptionAttribute), false).FirstOrDefault() as DescriptionAttribute;
-                    var problemNumber = Convert.ToInt32(problem.Name.Substring(7, 1));
+                    var problemNumber = Convert.ToInt32(problem.Name.Substring(7, problem.Name.Length - 7));
                     if (problemNumber == selectedProblem)
                     {
                         Console.Write(">>" + problem.Name.ToString());
