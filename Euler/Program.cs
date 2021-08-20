@@ -38,7 +38,8 @@ namespace Euler
                     if (nextStep == "Home")
                         goto case 1;
                     else
-                        break;
+                        Environment.Exit(1);
+                    break;
                 case 2:
                     goto case 1;
                 default:
@@ -58,18 +59,27 @@ namespace Euler
                      .SelectMany(assembly => assembly.GetTypes())
                      .Where(type => type.IsSubclassOf(typeof(AbstractProblem)));
                 Console.WriteLine("Here are the list of  Euler problems, Select the one you want to execute.\n");
-
+                var ProblemNumbersList = new List<int>();
                 foreach (var problem in problems)
                 {
-                    var descriptionAttribute = problem.GetCustomAttributes(typeof(DescriptionAttribute), false).FirstOrDefault() as DescriptionAttribute;
-                    var problemNumber = Convert.ToInt32(problem.Name.Substring(7, problem.Name.Length - 7));
-                    if (problemNumber == selectedProblem)
+
+                    ProblemNumbersList.Add(Convert.ToInt32(problem.Name.Substring(7, problem.Name.Length - 7)));
+
+                }
+                ProblemNumbersList.Sort();
+
+                foreach (var problem in ProblemNumbersList)
+                {
+                    var curPRob = problems.Where(item => item.Name == "Problem" + problem).FirstOrDefault();
+                    var descriptionAttribute = curPRob.GetCustomAttributes(typeof(DescriptionAttribute), false).FirstOrDefault() as DescriptionAttribute;
+
+                    if (problem == selectedProblem)
                     {
-                        Console.Write(">>" + problem.Name.ToString());
+                        Console.Write(">>" + curPRob.Name.ToString());
                     }
                     else
                     {
-                        Console.Write("  " + problem.Name.ToString());
+                        Console.Write("  " + curPRob.Name.ToString());
                     }
                     if (descriptionAttribute != null)
                     {
@@ -80,16 +90,23 @@ namespace Euler
                         Console.WriteLine();
                     }
                 }
+
                 key = Console.ReadKey(true);
                 if (key.Key.ToString() == "DownArrow")
                 {
-                    if (selectedProblem <= problems.Count())
+                    if (selectedProblem == problems.Count())
+                        selectedProblem = 0;
+                    if (selectedProblem < problems.Count())
                         selectedProblem = selectedProblem + 1;
+
                 }
                 else if (key.Key.ToString() == "UpArrow")
                 {
+                    if (selectedProblem == 1)
+                        selectedProblem = problems.Count() + 1;
                     if (selectedProblem - 1 > 0)
                         selectedProblem = selectedProblem - 1;
+
                 }
             }
             while (key.KeyChar != 13);
