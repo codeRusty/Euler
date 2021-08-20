@@ -17,32 +17,29 @@ namespace Euler.Problems
             Console.Write("What is the value of x (should be more than 2) : ");
             string input = Console.ReadLine();
 
-            StartStopwatch();
-
-            int output = 0;
-            bool isInt = int.TryParse(input, out output);
-            if (isInt && output > 2)
+            PermormanceMatrix(() =>
             {
-                Console.Write("The sum of ");
-
-                for (int i = 1; i < output; i++)
+                int output = 0;
+                bool isInt = int.TryParse(input, out output);
+                if (isInt && output > 2)
                 {
-                    if (i % 3 == 0 || i % 5 == 0)
+                    Console.Write("The sum of ");
+
+                    for (int i = 1; i < output; i++)
                     {
-                        Console.Write($"{i}, ");
-                        sum += i;
+                        if (i % 3 == 0 || i % 5 == 0)
+                        {
+                            Console.Write($"{i}, ");
+                            sum += i;
+                        }
                     }
+                    Console.WriteLine("is " + sum);
                 }
-
-
-                Console.WriteLine("is " + sum);
-            }
-            else
-            {
-                Console.WriteLine("Improper Argument");
-            }
-            StopStopwatch();
-            LogElapsedTime();
+                else
+                {
+                    Console.WriteLine("Improper Argument");
+                }
+            });
         }
     }
 }

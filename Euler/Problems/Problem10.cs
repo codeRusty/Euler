@@ -10,6 +10,11 @@ namespace Euler.Problems
     {
         public override void Execute()
         {
+            PermormanceMatrix(SumationOfPrime);
+        }
+
+        public void SumationOfPrime()
+        {
             double sum = 0;
 
             for (int i = 1; i < 10; i++)

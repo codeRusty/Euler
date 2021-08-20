@@ -21,12 +21,14 @@ namespace Euler
             if (time > 1000)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Execution time : {time}ms ");
+                Console.WriteLine($"--------------------------");
+                Console.WriteLine($"Execution time : {time} ms ");
                 Console.ForegroundColor = ConsoleColor.Yellow;
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"--------------------------");
                 Console.WriteLine($"Execution time : {time}ms ");
                 Console.ForegroundColor = ConsoleColor.Yellow;
             }
@@ -38,5 +40,21 @@ namespace Euler
         }
 
         public abstract void Execute();
+
+        public void PermormanceMatrix(Action function)
+        {
+            StartStopwatch();
+            function();
+            StopStopwatch();
+            LogElapsedTime();
+            LogMemoryUsed();
+        }
+
+        private void LogMemoryUsed()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"Space Allocated: {GC.GetTotalAllocatedBytes()/1000} KB ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+        }
     }
 }
