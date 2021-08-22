@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 
 namespace Euler.Problems
 {
+    [Description("Not Yet Implemented")]
     public class Problem11 : AbstractProblem
     {
-        [Description("Not Yet Implemented")]
+        
         public override void Execute()
         {
 
